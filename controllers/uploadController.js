@@ -1,4 +1,4 @@
-
+import {formatBytes} from '../Middleware/fromatBytes.js'
 
 export const upload = (req, res) => {
 	const files = req.files

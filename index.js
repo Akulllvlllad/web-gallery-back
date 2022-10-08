@@ -31,13 +31,18 @@ app.use('/images', express.static('images'))
 app.use(express.json())
 
 app.get('/auth/me', checkAuth, UserController.getMe)
+app.get('/promo', PostController.getPromo)
+
 
 app.post('/auth/register', registerValidation, UserController.register)
 app.post('/auth/login', loginValidation, UserController.login)
 
-app.post('/create', checkAuth, galleryValidation, PostController.create)
+app.post('/create',  PostController.create)
+app.get('/portfolio/:id', PostController.getOne)
+app.post('/multiple', upload.array('images', 16), UploadController.upload)
 
-app.post('/multiple', upload.array('images', 10), UploadController.upload)
+app.delete('/posts/:id', checkAuth, PostController.remove)
+
 
 app.listen(PORT, () => {
 	console.log(`App is listening on Port ${PORT}`)
