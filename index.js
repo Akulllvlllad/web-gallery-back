@@ -24,7 +24,7 @@ mongoose
 	.then(() => console.log('BD is OK'))
 	.catch(err => console.log('BD is ERROR', err))
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 'https://gallerywebapp.ml'
 
 app.use(cors())
 app.use('/images', express.static('images'))
